@@ -14,6 +14,7 @@
 		91A325C81BE7917F004FCC3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A325C71BE7917F004FCC3F /* Images.xcassets */; };
 		91A325CB1BE7917F004FCC3F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91A325C91BE7917F004FCC3F /* LaunchScreen.xib */; };
 		91A325D71BE7917F004FCC3F /* qsaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A325D61BE7917F004FCC3F /* qsaTests.m */; };
+		91A325E31BE798DD004FCC3F /* www in Resources */ = {isa = PBXBuildFile; fileRef = 91A325E21BE798DD004FCC3F /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		91A325D01BE7917F004FCC3F /* qsaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qsaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A325D51BE7917F004FCC3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91A325D61BE7917F004FCC3F /* qsaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qsaTests.m; sourceTree = "<group>"; };
+		91A325E21BE798DD004FCC3F /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		91A325AE1BE7917F004FCC3F = {
 			isa = PBXGroup;
 			children = (
+				91A325E21BE798DD004FCC3F /* www */,
 				91A325B91BE7917F004FCC3F /* qsa */,
 				91A325D31BE7917F004FCC3F /* qsaTests */,
 				91A325B81BE7917F004FCC3F /* Products */,
@@ -201,6 +204,7 @@
 			files = (
 				91A325C61BE7917F004FCC3F /* Main.storyboard in Resources */,
 				91A325CB1BE7917F004FCC3F /* LaunchScreen.xib in Resources */,
+				91A325E31BE798DD004FCC3F /* www in Resources */,
 				91A325C81BE7917F004FCC3F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
