@@ -11,6 +11,8 @@
 // thanks: http://hayageek.com/execute-javascript-in-ios/
 #import <JavascriptCore/JSContext.h>
 
+extern UIWebView *gWebView;
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *myWebView;
 @property (weak, nonatomic) JSContext * myContext;
@@ -22,12 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"view did load ok");
 
-    // thanks: http://stackoverflow.com/a/20156311/1283667
+    gWebView = self.myWebView;
+
+    // THANKS: http://stackoverflow.com/a/20156311/1283667
     JSContext *c = [self.myWebView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     self.myContext = c;
+
     // THANKS: https://infinum.co/the-capsized-eight/articles/running-javascript-in-an-ios-application-with-javascriptcore
-    // http://nshipster.com/javascriptcore/
+    //         http://nshipster.com/javascriptcore/
     c[@"$TestObject$query"] = ^(NSString * arg1, NSString * arg2) {
         NSString * s1 = [NSString stringWithFormat: @"received %@", arg2];
         NSString * e = [NSString stringWithFormat:@"%@('%@', '%@');", @"TestObjectCB", arg1, s1];
