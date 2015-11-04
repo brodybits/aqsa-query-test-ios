@@ -14,10 +14,11 @@ extern UIWebView *gWebView;
 + (BOOL) canInitWithRequest:(NSURLRequest *)request {
     NSLog(@"got uri: %@", request.URL.absoluteString);
     if ([request.URL.absoluteString hasPrefix:@"file:///aqaq"]) {
+      NSString * s1 = [NSString stringWithFormat: @"got uri: %@", request.URL.absoluteString];
+      NSString * e = [NSString stringWithFormat:@"%@('%@');", @"aqcallback", s1];
+
       dispatch_async(dispatch_get_main_queue(), ^{
-        NSString * s1 = [NSString stringWithFormat: @"got uri: %@", request.URL.absoluteString];
-        NSString * e = [NSString stringWithFormat:@"%@('%@');", @"aqcallback", s1];
-        // FUTURE TBD: [self.myContext evaluateScript: e];
+        // FUTURE TBD: [myJSContext evaluateScript: e];
         [gWebView stringByEvaluatingJavaScriptFromString: e];
       });
     }

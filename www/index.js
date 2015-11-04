@@ -9,6 +9,6 @@ function TestObjectCB(a1, a2) {
 var r = TestObject.query("test-string-1", "test-string-2");
 document.getElementById('r1').innerHTML="got res: " + r;
 
-var w = new Worker('task.js');
+var w = new Worker('mytask.js');
 
 w.postMessage('go');
