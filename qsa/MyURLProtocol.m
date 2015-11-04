@@ -16,7 +16,7 @@ extern UIWebView *gWebView;
     if ([request.URL.absoluteString hasPrefix:@"file:///aqaq"]) {
       dispatch_async(dispatch_get_main_queue(), ^{
         NSString * s1 = [NSString stringWithFormat: @"got uri: %@", request.URL.absoluteString];
-        NSString * e = [NSString stringWithFormat:@"%@('%@', '%@');", @"TestObjectCB", @"safd", s1];
+        NSString * e = [NSString stringWithFormat:@"%@('%@');", @"aqcallback", s1];
         // FUTURE TBD: [self.myContext evaluateScript: e];
         [gWebView stringByEvaluatingJavaScriptFromString: e];
       });
