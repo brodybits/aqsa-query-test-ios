@@ -8,6 +8,7 @@
 // thanks: http://hayageek.com/execute-javascript-in-ios/
 #import <JavascriptCore/JSContext.h>
 
+// XXX TODO MOVE:
 extern UIWebView *gWebView;
 
 @interface ViewController ()

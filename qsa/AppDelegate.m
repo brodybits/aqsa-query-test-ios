@@ -7,16 +7,45 @@
 
 #import "MyURLProtocol.h"
 
+// XXX TODO MOVE:
+extern UIWebView *gWebView;
+
+@interface TestHandler : AQHandler
+
+@end
+
+@implementation TestHandler
+
+- (void) handleMessage:(NSString *)name withParameters:(NSString *)parameters
+{
+    NSLog(@"test handler got message: %@ with parameters: %@", name, parameters);
+    NSString * s1 = [NSString stringWithFormat: @"got method: %@ params: %@", name, parameters];
+    
+    NSString * myScript = [NSString stringWithFormat:@"%@('%@');", @"aqcallback", s1];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // FUTURE TBD: [myJSContext evaluateScript: myScript];
+        [gWebView stringByEvaluatingJavaScriptFromString: myScript];
+    });
+}
+
+@end
+
+
 @interface AppDelegate ()
+
+@property AQHandler * myHandler;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [NSURLProtocol registerClass:[MyURLProtocol class]];
+    self.myHandler = [[TestHandler alloc] init];
+    [AQManager addHandler:self.myHandler for:@"th"];
+    [AQManager addHandler:self.myHandler for:@"as"];
     return YES;
 }
 

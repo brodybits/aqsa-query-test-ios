@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+// XXX TODO MOVE:
 UIWebView *gWebView;
 
 int main(int argc, char * argv[]) {

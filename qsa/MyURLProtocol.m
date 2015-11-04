@@ -7,7 +7,47 @@
 
 #import <UIKit/UIKit.h>
 
+// XXX TODO MOVE:
 extern UIWebView *gWebView;
+
+@implementation AQHandler
+
+// TBD ???:
+- (id) init
+{
+    self = [super init];
+    return self;
+}
+
+- (void) handleMessage: (NSString *)name withParameters: (NSString *) parameters
+{
+    NSLog(@"got message name: %@ with parameters: %@", name, parameters);
+}
+
+@end
+
+// XXX TODO MOVE:
+static NSMutableDictionary * myHandlers = nil;
+
+@implementation AQManager
+
++ (void) addHandler:(AQHandler *)handler for:(NSString *)name
+{
+    static dispatch_once_t my_init_token;
+    static NSMutableDictionary * my_handlers = nil;
+
+    dispatch_once(&my_init_token, ^{
+        myHandlers = my_handlers = [[NSMutableDictionary alloc] init];
+    });
+    [myHandlers setObject: handler forKey: name];
+}
+
++ (AQHandler *) getHandlerFor: (NSString *) name
+{
+    return (myHandlers == nil) ? nil : [myHandlers objectForKey: name];
+}
+
+@end
 
 @implementation MyURLProtocol
 
@@ -29,6 +69,8 @@ extern UIWebView *gWebView;
             return NO;
         }
 
+        NSString * parameters = [handleComponents objectAtIndex: 1];
+
         NSArray * routeComponents = [[handleComponents objectAtIndex: 0] componentsSeparatedByString: @":"];
         if ([routeComponents count] < 2) {
             NSLog(@"SORRY missing : in URI: %@", req);
@@ -41,14 +83,15 @@ extern UIWebView *gWebView;
             return NO;
         }
 
-        NSString * s1 = [NSString stringWithFormat: @"got obj: %@ method: %@ code: %@ params: %@", [routeComponents objectAtIndex: 0], [routeParamComponents objectAtIndex: 0], [routeParamComponents objectAtIndex: 1], [handleComponents objectAtIndex: 1]];
+        NSString * me = [routeParamComponents objectAtIndex: 0];
+        // XXX SECURITY TODO: use code parameter to check a security code, like they do in the Cordova framework
+        //NSString * code = [routeParamComponents objectAtIndex: 1];
+        // ...
 
-        NSString * myScript = [NSString stringWithFormat:@"%@('%@');", @"aqcallback", s1];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // FUTURE TBD: [myJSContext evaluateScript: myScript];
-            [gWebView stringByEvaluatingJavaScriptFromString: myScript];
-        });
+        AQHandler * handler = [AQManager getHandlerFor:[routeComponents objectAtIndex:0]];
+        if (handler != nil) {
+            [handler handleMessage: me withParameters: parameters];
+        }
     }
     return NO;
 }
