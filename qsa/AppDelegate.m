@@ -6,7 +6,7 @@
 #import "AppDelegate.h"
 
 #import "AQManager.h"
-#import "MyURLProtocol.h"
+#import "AQURLProtocol.h"
 
 // XXX TODO MOVE:
 extern UIWebView *gWebView;
@@ -43,7 +43,7 @@ extern UIWebView *gWebView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [NSURLProtocol registerClass:[MyURLProtocol class]];
+    [NSURLProtocol registerClass:[AQURLProtocol class]];
     self.myHandler = [[TestHandler alloc] init];
     [AQManager addHandler:self.myHandler for:@"th"];
     [AQManager addHandler:self.myHandler for:@"as"];

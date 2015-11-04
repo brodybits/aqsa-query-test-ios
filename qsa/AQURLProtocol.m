@@ -1,15 +1,18 @@
 //
-//  MyURLProtocol.m
-//  qsa
+//  AQURLProtocol.m
+//
+//  Author: Christopher J. Brody
+//
+//  License: UNLICENSE (public domain)
 //
 
-#import "MyURLProtocol.h"
+#import "AQURLProtocol.h"
 
 #import <UIKit/UIKit.h>
 
 #import "AQManager.h"
 
-@implementation MyURLProtocol
+@implementation AQURLProtocol
 
 + (BOOL) canInitWithRequest:(NSURLRequest *)request {
     NSLog(@"got uri: %@", request.URL.absoluteString);
