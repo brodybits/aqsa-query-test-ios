@@ -16,6 +16,8 @@
 		91A325D71BE7917F004FCC3F /* qsaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A325D61BE7917F004FCC3F /* qsaTests.m */; };
 		91A325E31BE798DD004FCC3F /* www in Resources */ = {isa = PBXBuildFile; fileRef = 91A325E21BE798DD004FCC3F /* www */; };
 		91A325E61BE8068F004FCC3F /* MyURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A325E51BE8068F004FCC3F /* MyURLProtocol.m */; };
+		91DAFC281BEA99BF00B13EFF /* AQManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC271BEA99BF00B13EFF /* AQManager.m */; };
+		91ECD9521BEA91F000A3BE1C /* AQHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD9511BEA91F000A3BE1C /* AQHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,10 @@
 		91A325E21BE798DD004FCC3F /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		91A325E41BE8068F004FCC3F /* MyURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyURLProtocol.h; sourceTree = "<group>"; };
 		91A325E51BE8068F004FCC3F /* MyURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyURLProtocol.m; sourceTree = "<group>"; };
+		91DAFC261BEA99BF00B13EFF /* AQManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQManager.h; sourceTree = "<group>"; };
+		91DAFC271BEA99BF00B13EFF /* AQManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQManager.m; sourceTree = "<group>"; };
+		91ECD9501BEA91F000A3BE1C /* AQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQHandler.h; sourceTree = "<group>"; };
+		91ECD9511BEA91F000A3BE1C /* AQHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 			children = (
 				91A325BE1BE7917F004FCC3F /* AppDelegate.h */,
 				91A325BF1BE7917F004FCC3F /* AppDelegate.m */,
+				91ECD9501BEA91F000A3BE1C /* AQHandler.h */,
+				91ECD9511BEA91F000A3BE1C /* AQHandler.m */,
+				91DAFC261BEA99BF00B13EFF /* AQManager.h */,
+				91DAFC271BEA99BF00B13EFF /* AQManager.m */,
 				91A325C11BE7917F004FCC3F /* ViewController.h */,
 				91A325C21BE7917F004FCC3F /* ViewController.m */,
 				91A325C41BE7917F004FCC3F /* Main.storyboard */,
@@ -231,7 +241,9 @@
 				91A325C31BE7917F004FCC3F /* ViewController.m in Sources */,
 				91A325E61BE8068F004FCC3F /* MyURLProtocol.m in Sources */,
 				91A325C01BE7917F004FCC3F /* AppDelegate.m in Sources */,
+				91ECD9521BEA91F000A3BE1C /* AQHandler.m in Sources */,
 				91A325BD1BE7917F004FCC3F /* main.m in Sources */,
+				91DAFC281BEA99BF00B13EFF /* AQManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +440,7 @@
 				91A325DC1BE7917F004FCC3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91A325DD1BE7917F004FCC3F /* Build configuration list for PBXNativeTarget "qsaTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +449,7 @@
 				91A325DF1BE7917F004FCC3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

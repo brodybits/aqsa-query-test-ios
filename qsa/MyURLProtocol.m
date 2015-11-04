@@ -7,47 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-// XXX TODO MOVE:
-extern UIWebView *gWebView;
-
-@implementation AQHandler
-
-// TBD ???:
-- (id) init
-{
-    self = [super init];
-    return self;
-}
-
-- (void) handleMessage: (NSString *)name withParameters: (NSString *) parameters
-{
-    NSLog(@"got message name: %@ with parameters: %@", name, parameters);
-}
-
-@end
-
-// XXX TODO MOVE:
-static NSMutableDictionary * myHandlers = nil;
-
-@implementation AQManager
-
-+ (void) addHandler:(AQHandler *)handler for:(NSString *)name
-{
-    static dispatch_once_t my_init_token;
-    static NSMutableDictionary * my_handlers = nil;
-
-    dispatch_once(&my_init_token, ^{
-        myHandlers = my_handlers = [[NSMutableDictionary alloc] init];
-    });
-    [myHandlers setObject: handler forKey: name];
-}
-
-+ (AQHandler *) getHandlerFor: (NSString *) name
-{
-    return (myHandlers == nil) ? nil : [myHandlers objectForKey: name];
-}
-
-@end
+#import "AQManager.h"
 
 @implementation MyURLProtocol
 

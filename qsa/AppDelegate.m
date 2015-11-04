@@ -5,6 +5,7 @@
 
 #import "AppDelegate.h"
 
+#import "AQManager.h"
 #import "MyURLProtocol.h"
 
 // XXX TODO MOVE:
