@@ -20,6 +20,8 @@ The interaction between Javascript and native iOS works as follows:
 - The Javascript executes a simple XHR POST with a `file:` URI (FUTURE TBD custom URI protocol prefix)
 - The Objective-C sees URL request and triggers the Javascript `aqcallback` function with a string that echos the URI from the XHR request
 
+This project also has an `AQManager` component that keeps and handles the routing for multiple components that implement the `AQHandler` interface.
+
 In addition, the custom `ViewController` registers a function object in the `JSContext` that returns a string to Javascript. It does *not* work from the web worker but can be used for certain tasks, such as checking an interface version or getting an internal bridge secret like Cordova does.
 
 This project is a starting point for the following ideas (so far):

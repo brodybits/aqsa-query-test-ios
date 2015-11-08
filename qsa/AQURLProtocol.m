@@ -15,6 +15,7 @@
 @implementation AQURLProtocol
 
 + (BOOL) canInitWithRequest:(NSURLRequest *)request {
+    // XXX TBD is this really the most efficient possible?
     NSLog(@"got uri: %@", request.URL.absoluteString);
     if ([request.URL.absoluteString hasPrefix:@"file:///aqaq"]) {
         NSString * req = request.URL.absoluteString;
@@ -40,7 +41,7 @@
             return NO;
         }
 
-        NSArray * routeParamComponents = [[routeComponents objectAtIndex: 1] componentsSeparatedByString: @"@"];
+        NSArray * routeParamComponents = [[routeComponents objectAtIndex: 1] componentsSeparatedByString: @"$"];
         if ([routeParamComponents count] < 2) {
             NSLog(@"SORRY missing @ in URI: %@", req);
             return NO;
