@@ -43,18 +43,32 @@
 
         NSArray * routeParamComponents = [[routeComponents objectAtIndex: 1] componentsSeparatedByString: @"$"];
         if ([routeParamComponents count] < 2) {
+            NSLog(@"SORRY missing $ in URI: %@", req);
+            return NO;
+        }
+
+        NSString * method = [routeParamComponents objectAtIndex: 0];
+
+        NSArray * internalComponents = [[routeParamComponents objectAtIndex: 1] componentsSeparatedByString: @"@"];
+        if ([internalComponents count] < 2) {
             NSLog(@"SORRY missing @ in URI: %@", req);
             return NO;
         }
 
-        NSString * me = [routeParamComponents objectAtIndex: 0];
+        NSArray * cbComponents = [[internalComponents objectAtIndex: 0] componentsSeparatedByString: @"-"];
+        if ([cbComponents count] < 2) {
+            NSLog(@"SORRY missing - in URI: %@", req);
+            return NO;
+        }
+
+
         // XXX SECURITY TODO: use code parameter to check a security code, like they do in the Cordova framework
-        //NSString * code = [routeParamComponents objectAtIndex: 1];
+        //NSString * code = [internalComponents objectAtIndex: 1];
         // ...
 
         AQHandler * handler = [AQManager getHandlerFor:[routeComponents objectAtIndex:0]];
         if (handler != nil) {
-            [handler handleMessage: me withParameters: parameters];
+            [handler handleMessage: method withParameters: parameters cbHandler: [cbComponents objectAtIndex:0] cbId: [cbComponents objectAtIndex:1]];
         }
     }
     return NO;

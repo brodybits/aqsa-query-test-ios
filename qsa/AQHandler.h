@@ -10,6 +10,6 @@
 
 @interface AQHandler : NSObject
 
-- (void) handleMessage: (NSString *)name withParameters: (NSString *) parameters;
+- (void) handleMessage: (NSString *)name withParameters: (NSString *) parameters cbHandler: (NSString *) cbHandler cbId: (NSString *) cbid;
 
 @end

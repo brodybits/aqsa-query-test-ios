@@ -1,6 +1,16 @@
-// THANKS: http://www.html5rocks.com/en/tutorials/workers/basics/
+importScripts('aqworker.js');
+
+var mycbprefix = '!!!mycb.';
+
 self.addEventListener('message', function(ev) {
-  var r = new XMLHttpRequest();
-  r.open("POST", "file:///aqaq#as:df$a1?fs,d=wl%23&fw=%4238s@fda", true);
-  r.send();
+  if (ev.data === 'go') {
+    mycbid = mycbprefix + 1;
+    aqcbmap[mycbid] = function(s) {
+      self.postMessage('got data: ' + s);
+      // no longer needed, prevent a possible leak:
+      delete aqcbmap[mycbid];
+    }
+
+    aqsend('as', 'df', mycbid, 'a1', 'fs,d=wl%23&fw=%4238s@fda');
+  }
 });

@@ -17,13 +17,14 @@ extern UIWebView *gWebView;
 
 @implementation TestHandler
 
-- (void) handleMessage:(NSString *)name withParameters:(NSString *)parameters
+- (void) handleMessage: (NSString *)name withParameters: (NSString *) parameters cbHandler: (NSString *) cbHandler cbId: (NSString *) cbid
 {
-    NSLog(@"test handler got message: %@ with parameters: %@", name, parameters);
-    NSString * s1 = [NSString stringWithFormat: @"got method: %@ params: %@", name, parameters];
-    
-    NSString * myScript = [NSString stringWithFormat:@"%@('%@');", @"aqcallback", s1];
-    
+    NSLog(@"test handler got message method: %@ with parameters: %@", name, parameters);
+    NSString * s1 = [NSString stringWithFormat: @"method: %@ params: %@", name, parameters];
+
+    NSString * myScript = [NSString stringWithFormat:@"%@('%@', '%@?%@');", @"aqcallback", cbHandler, cbid, s1];
+    //NSLog(@"dispatch Javascript: %@", myScript);
+
     dispatch_async(dispatch_get_main_queue(), ^{
         // FUTURE TBD: [myJSContext evaluateScript: myScript];
         [gWebView stringByEvaluatingJavaScriptFromString: myScript];
