@@ -6,7 +6,7 @@ var r = TestObject.query("test-string-1", "test-string-2");
 document.getElementById('r1').innerHTML="got res: " + r;
 
 var w = new Worker('mytask.js');
-aqworker('cbh1', w);
+AQ.aqworker('cbh1', w);
 w.addEventListener('message', function(ev) {
   document.getElementById('res').innerHTML=ev.data;
 });

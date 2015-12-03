@@ -22,7 +22,7 @@ extern UIWebView *gWebView;
     NSLog(@"test handler got message method: %@ with parameters: %@", name, parameters);
     NSString * s1 = [NSString stringWithFormat: @"method: %@ params: %@", name, parameters];
 
-    NSString * myScript = [NSString stringWithFormat:@"%@('%@', '%@?%@');", @"aqcallback", cbHandler, cbid, s1];
+    NSString * myScript = [NSString stringWithFormat:@"%@['%@']('%@?%@');", @"$AQCB", cbHandler, cbid, s1];
     //NSLog(@"dispatch Javascript: %@", myScript);
 
     dispatch_async(dispatch_get_main_queue(), ^{
